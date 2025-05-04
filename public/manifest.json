@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "UB Tarefas",
+    "version": "4.0",
+    "description": "Acesse suas atividades pendentes da Unibalsas de forma rápida e fácil!",
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": {
+            "16": "image/icon.png",
+            "48": "image/icon.png",
+            "128": "image/icon.png"
+        }
+    },
+    "icons": {
+        "16": "image/icon.png",
+        "48": "image/icon.png",
+        "128": "image/icon.png"
+    },
+    "homepage_url": "https://github.com/Sonata-dos-Bytes/ub-task-extension",
+    "permissions": []
+}
