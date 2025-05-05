@@ -10,7 +10,7 @@ export default function LoginPage() {
             await signIn({ login: '22.1.71557', password: 'PEDROEROSA' });
             console.log('Login successful');
 
-            navigate('/'); // Redireciona para a página inicial
+            navigate('/');
         } catch (error) {
             console.error('Login failed', error);
         }

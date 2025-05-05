@@ -10,14 +10,14 @@ function PrivateRoute({ children }: { children: React.ReactNode }) {
   console.info('session', session);
   console.info('isLoading', isLoading);
 
-  if (isLoading) {
+  if (isLoading && !session) {
     return <div>Loading...</div>;
   }
 
   if (!session) {
-      return <Navigate to="/login" replace />;
+    return <Navigate to="/login" replace />;
   }
-
+  
   return <>{children}</>;
 }
 

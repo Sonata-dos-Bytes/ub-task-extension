@@ -34,14 +34,12 @@ export function useStorageState(key: string): UseStateHook<string> {
         } else {
           localStorage.setItem(key, value);
         }
-        if (value !== state[1]) {
-          setState(value);
-        }
+        setState(value);
       } catch (e) {
         console.error("Erro ao salvar no localStorage:", e);
       }
     },
-    [key, state]
+    [key]
   );
 
   return [state, setValue];
