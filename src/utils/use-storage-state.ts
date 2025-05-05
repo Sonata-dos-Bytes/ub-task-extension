@@ -6,8 +6,9 @@ function useAsyncState<T>(
   initialValue: [boolean, T | null] = [true, null]
 ): UseStateHook<T> {
   return useReducer(
-    (_state: [boolean, T | null], action: T | null = null): [boolean, T | null] =>
-      [false, action],
+    (_state: [boolean, T | null], action: T | null): [boolean, T | null] => {
+      return [false, action];
+    },
     initialValue
   ) as UseStateHook<T>;
 }
@@ -19,7 +20,9 @@ export function useStorageState(key: string): UseStateHook<string> {
     try {
       const storedValue = localStorage.getItem(key);
       if (storedValue !== state[1]) {
-        setState(storedValue);
+        setState(storedValue); 
+      } else {
+        setState(state[1]); 
       }
     } catch (e) {
       console.error("Erro ao acessar o localStorage:", e);
@@ -34,7 +37,7 @@ export function useStorageState(key: string): UseStateHook<string> {
         } else {
           localStorage.setItem(key, value);
         }
-        setState(value);
+        setState(value); 
       } catch (e) {
         console.error("Erro ao salvar no localStorage:", e);
       }
