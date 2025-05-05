@@ -17,5 +17,7 @@
         "128": "image/icon.png"
     },
     "homepage_url": "https://github.com/Sonata-dos-Bytes/ub-task-extension",
-    "permissions": []
+    "permissions": [
+        "storage"
+    ]
 }

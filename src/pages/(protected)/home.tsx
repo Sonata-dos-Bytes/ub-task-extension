@@ -1,4 +1,3 @@
-import React from "react";
 import { useSession } from "../../contexts/auth-context";
 
 export default function HomePage() {

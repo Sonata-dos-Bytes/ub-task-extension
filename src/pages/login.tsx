@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSession } from '../contexts/auth-context';
 import { useNavigate } from 'react-router-dom';
 

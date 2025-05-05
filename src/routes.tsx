@@ -5,7 +5,11 @@ import HomePage from './pages/(protected)/home';
 import { useSession } from './contexts/auth-context';
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
-  const { session } = useSession();
+  const { session, isLoading } = useSession();
+
+  if (isLoading) {
+    return <Navigate to="/" replace/>;
+  }
 
   if (!session) {
       return <Navigate to="/login" replace />;
