@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
     const { signIn } = useSession();
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const handleLogin = async () => {
         try {
@@ -17,8 +17,8 @@ export default function LoginPage() {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '600px', width: '300px' }}>
-            <h1>Pagina Login</h1>
+        <div className='flex flex-col items-center justify-center h-[600px] w-[400px] bg-white rounded-lg shadow-md'>
+            <h1 className='text-2xl font-bold mb-4 text-black'>Login</h1>
 
             <button onClick={handleLogin}>Login</button>
         </div>
