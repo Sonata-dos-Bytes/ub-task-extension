@@ -7,8 +7,11 @@ import { useSession } from './contexts/auth-context';
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const { session, isLoading } = useSession();
 
+  console.info('session', session);
+  console.info('isLoading', isLoading);
+
   if (isLoading) {
-    return <Navigate to="/" replace/>;
+    return <div>Loading...</div>;
   }
 
   if (!session) {
