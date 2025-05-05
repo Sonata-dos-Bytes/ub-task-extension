@@ -18,6 +18,7 @@
     },
     "homepage_url": "https://github.com/Sonata-dos-Bytes/ub-task-extension",
     "permissions": [
-        "storage"
+        "storage",
+        "tabs"
     ]
 }
