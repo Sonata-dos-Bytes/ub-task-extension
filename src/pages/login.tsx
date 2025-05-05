@@ -17,7 +17,7 @@ export default function LoginPage() {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '600px', width: '300px' }}>
             <h1>Pagina Login</h1>
 
             <button onClick={handleLogin}>Login</button>

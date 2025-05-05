@@ -5,17 +5,12 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "strict": true,
-    "baseUrl": "./src",               
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "skipLibCheck": true,
     "paths": {
-      "@/*": ["./*"],
-      "@utils/*": ["utils/*"],
-      "@types/*": ["types/*"],
-      "@context/*": ["contexts/*"],
-      "@scripts/*": ["scripts/*"],
-      "@schemas/*": ["schemas/*"],
-      "@constants/*": ["constants/*"],
-      "@assets/*": ["assets/*"]
+      "@/*": ["./src/*"]
     }
   }
 }

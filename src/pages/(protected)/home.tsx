@@ -5,7 +5,7 @@ export default function HomePage() {
     const userData = user();
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '600px', width: '300px' }}>
             <h1>Pagina Home</h1>
 
             <h2>Bem-vindo, {userData?.name}</h2>
