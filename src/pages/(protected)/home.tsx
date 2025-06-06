@@ -1,8 +1,11 @@
+import Card from "../../components/task-card";
 import { useSession } from "../../contexts/auth-context";
 
 export default function HomePage() {
     const { signOut, user } = useSession();
     const userData = user();
+
+    console.log(userData)
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '600px', width: '300px' }}>
@@ -10,6 +13,8 @@ export default function HomePage() {
 
             <h2>Bem-vindo, {userData?.name}</h2>
             <h3>Seu login é: {userData?.authorization.login}</h3>
+
+            {/* <Card /> */}
 
             <button
                 onClick={() => signOut()}
