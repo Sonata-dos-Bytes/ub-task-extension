@@ -21,12 +21,12 @@ export async function handleLogin({login, password}: LoginProps): Promise<User> 
             };
             return data;
         } else {
-            throw new CustomError("Ocorreu um erro ao fazer login, verifique seu login e senha.", "Error Login");
+            throw new CustomError("Falha ao realizar login. Verifique suas credenciais.", "Error Login");
         }
     } catch (error) {
         console.log("error", error);
         throw new CustomError(
-            "Ocorreu um erro interno, tente novamente mais tarde.",
+            "Falha ao realizar login. Verifique suas credenciais.",
             "Error Login",
         );
     }

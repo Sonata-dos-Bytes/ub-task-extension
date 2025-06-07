@@ -16,6 +16,7 @@ import {
   mergeRefs,
   useControllableState,
 } from "@chakra-ui/react"
+import { Key } from "lucide-react"
 import * as React from "react"
 import { LuEye, LuEyeOff } from "react-icons/lu"
 
@@ -41,7 +42,7 @@ export const PasswordInput = React.forwardRef<
     defaultVisible,
     visible: visibleProp,
     onVisibleChange,
-    visibilityIcon = { on: <LuEye />, off: <LuEyeOff /> },
+    visibilityIcon = { on: <LuEye width={12} />, off: <LuEyeOff width={12} /> },
     ...rest
   } = props
 
@@ -68,12 +69,15 @@ export const PasswordInput = React.forwardRef<
           {visible ? visibilityIcon.off : visibilityIcon.on}
         </VisibilityTrigger>
       }
+      startElement={<Key width={12} />}
       {...rootProps}
     >
+
       <Input
         {...rest}
         ref={mergeRefs(ref, inputRef)}
         type={visible ? "text" : "password"}
+        color="#505056"
       />
     </InputGroup>
   )
@@ -83,6 +87,7 @@ const VisibilityTrigger = React.forwardRef<HTMLButtonElement, ButtonProps>(
   function VisibilityTrigger(props, ref) {
     return (
       <IconButton
+        backgroundColor="transparent"
         tabIndex={-1}
         ref={ref}
         me="-2"
