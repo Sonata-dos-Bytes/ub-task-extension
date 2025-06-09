@@ -3,12 +3,14 @@ export interface Task {
     matter: string;
     url: string;
     matterUrl: string;
-    rawStart: string;
-    dateStart: string;
+    rawStart: string | null;
+    dateStart: string | null;
     rawEnd: string;
     dateEnd: string;
     daysLeft: number;
-    status: string;
-    dateDetailsInPortuguese: string;
-    taskDetails: string;
+    status: StatusTask;
+    dateDetailsInPortuguese: string | null;
+    taskDetails: string | null;
 }
+
+export type StatusTask = 'upcoming' | 'due' | 'overdue' | 'completed';
