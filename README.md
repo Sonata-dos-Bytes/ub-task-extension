@@ -1,54 +1,91 @@
-# React + TypeScript + Vite
+# 🖥️ UB Task Extension
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+UB Task Extension é uma extensão web desenvolvida em **React + TypeScript** para facilitar o acompanhamento de tarefas acadêmicas da UB Virtual, com visual moderno, responsivo e integração com a API UB Task.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📚 Tabela de Conteúdos
 
-## Expanding the ESLint configuration
+- [🖥️ UB Task Extension](#️-ub-task-extension)
+  - [📚 Tabela de Conteúdos](#-tabela-de-conteúdos)
+  - [📖 Visão Geral](#-visão-geral)
+  - [🛠 Tecnologias](#-tecnologias)
+  - [⚙️ Configuração](#️-configuração)
+    - [📋 Pré-requisitos](#-pré-requisitos)
+    - [⬇️ Instalação](#️-instalação)
+    - [🎬 Execução Local](#-execução-local)
+  - [📒 Sobre](#-sobre)
+  - [👨‍💻 Desenvolvedores](#-desenvolvedores)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 📖 Visão Geral
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+A UB Task Extension permite:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Visualizar tarefas acadêmicas da UB Virtual com detalhes de matéria, título, prazos e status.
+- Login seguro e armazenamento local de sessão.
+- Interface responsiva, moderna e navegação intuitiva.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Ideal para estudantes que desejam organizar e acompanhar suas atividades acadêmicas de forma prática, diretamente no navegador.
+
+---
+
+## 🛠 Tecnologias
+
+- **React** (Vite)
+- **TypeScript**
+- **Chakra UI** (componentização e temas)
+- **Lucide React** (ícones)
+- **Day.js** (manipulação de datas)
+- **React Hook Form** (formulários)
+- **Context API** (autenticação e estado global)
+- **Tailwind CSS** (opcional, para utilitários de estilo)
+
+---
+
+## ⚙️ Configuração
+
+### 📋 Pré-requisitos
+
+- Node.js >= 18.x
+- npm >= 9.x ou yarn
+
+### ⬇️ Instalação
+
+1. Clone o repositório e acesse a pasta:
+   ```bash
+   git clone https://github.com/Sonata-dos-Bytes/ub-task-extension.git
+   cd ub-task-extension
+
+2. Instale as dependências:
+   ```bash
+   npm install
+    # ou
+    yarn
+  
+### 🎬 Execução Local
+
+1. Inicie o projeto em modo desenvolvimento:
+   ```bash
+   npm run dev
+    # ou
+    yarn dev
+
+2. Acesse http://localhost:5173 no navegador.
+
+## 📒 Sobre
+
+Desenvolvido por Sonata dos Bytes.  
+Contato: pedro.henrique.martins404@gmail.com  
+Repositório: https://github.com/Sonata-dos-Bytes/ub-task-app
+
+
+## 👨‍💻 Desenvolvedores
+
+- [@Erikli999](https://github.com/Erikli999) — Erikli999  
+- [@guilherme-felipe123](https://github.com/guilherme-felipe123) — Guilherme Felipe  
+- [@luanklo](https://github.com/luanklo) — Luan Jacomini Kloh  
+- [@Matheuz233](https://github.com/Matheuz233) — Matheus Augusto  
+- [@piedro404](https://github.com/piedro404) — Pedro Henrique Martins Borges  
+- [@thayna-bezerra](https://github.com/thayna-bezerra) — Thayna Bezerra  
