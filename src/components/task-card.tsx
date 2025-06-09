@@ -10,6 +10,10 @@ const TaskCard = ({ data }: { data: Task }) => {
   const { isOverdue, dinamicCountdownText } = useCountdown(data.dateEnd)
   const bgColor = useMemo(() => getRandomColor(), [])
 
+  const handlerPress = () => {
+    window.open(data.url, "_blank");
+  }
+
   return (
     <Box
       w="90%"
@@ -23,7 +27,9 @@ const TaskCard = ({ data }: { data: Task }) => {
       borderColor="#bfdbfe"
       shadow="sm"
       _hover={{ shadow: "md", cursor: "pointer" }}
-      onClick={() => {}}>
+      userSelect="none"
+      onClick={handlerPress}>
+
       <Flex align="flex-start" gap={3} minH="70%">
         <Flex
           p={2}
