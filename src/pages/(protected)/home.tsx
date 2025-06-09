@@ -1,5 +1,5 @@
 import { Avatar, Box, Flex, Heading, IconButton, Text } from "@chakra-ui/react"
-import { LogOut } from "lucide-react"
+import { LogOut, Repeat } from "lucide-react"
 import TaskCard from "../../components/task-card"
 import { useSession } from "../../contexts/auth-context"
 import { Task } from "../../types/task-types"
@@ -113,58 +113,70 @@ export default function HomePage() {
       </Box>
 
       <Box
-  flex="1"
-  paddingY={4}
-  w="full"
-  display="flex"
-  flexDirection="column"
-  overflow="hidden"
->
-  <Heading
-    size="lg"
-    fontWeight="bold"
-    fontFamily="Poppins, sans-serif"
-    color="#0D1B34"
-    mb={4}
-    pl={4}
-  >
-    Atividades Pendentes
-  </Heading>
-
-  {hasTasks ? (
-    <Box
-      flex="1"
-      overflowY="auto"
-      w={"full"}
-    >
-      {Object.values(tasks).map((task, index) => (
-        <TaskCard key={index} data={task} />
-      ))}
-    </Box>
-  ) : (
-    <Flex
-      flex="1"
-      align="center"
-      justify="center"
-    >
-      <Text
-        as="div"
-        style={{
-          fontFamily: "Poppins, sans-serif",
-          fontWeight: 500,
-          fontSize: "1rem",
-          color: "#94a3b8",
-          whiteSpace: "nowrap",
-          textOverflow: "ellipsis",
-          overflow: "hidden",
-        }}
+        flex="1"
+        paddingY={4}
+        w="full"
+        display="flex"
+        flexDirection="column"
+        overflow="hidden"
       >
-        {loading ? `Buscando atividades${dots}` : "Não há atividades por enquanto"}
-      </Text>
-    </Flex>
-  )}
-</Box>
+        <Flex align="center" justify="space-between" pl={4} pr={4}>
+          <Heading
+            size="lg"
+            fontWeight="bold"
+            fontFamily="Poppins, sans-serif"
+            color="#0D1B34"
+          >
+            Atividades Pendentes
+          </Heading>
 
+          <IconButton
+            aria-label="Recarregar tarefas"
+            onClick={onRefresh}
+            loading={refreshing}
+            variant="ghost"
+            backgroundColor="#9A3234"
+            color={"white"}
+            _hover={{ backgroundColor: "#7a2629" }}
+            size="sm"
+          >
+            <Repeat size={18} />
+          </IconButton>
+        </Flex>
+
+        {hasTasks ? (
+          <Box
+            flex="1"
+            overflowY="auto"
+            w={"full"}
+          >
+            {Object.values(tasks).map((task, index) => (
+              <TaskCard key={index} data={task} />
+            ))}
+          </Box>
+        ) : (
+          <Flex
+            flex="1"
+            align="center"
+            justify="center"
+          >
+            <Text
+              as="div"
+              style={{
+                fontFamily: "Poppins, sans-serif",
+                fontWeight: 500,
+                fontSize: "1rem",
+                color: "#94a3b8",
+                whiteSpace: "nowrap",
+                textOverflow: "ellipsis",
+                overflow: "hidden",
+              }}
+            >
+              {loading ? `Buscando atividades${dots}` : "Não há atividades por enquanto"}
+            </Text>
+          </Flex>
+        )}
+      </Box>
     </Flex>
   )
 }
