@@ -1,77 +1,80 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { useSession } from "../contexts/auth-context"
 import { handleTasks } from "../scripts/tasks"
 import { StatusTask, Task } from "../types/task-types"
 import { useStorageState } from "../utils/use-storage-state"
 
 export function useTasks() {
-    const { user } = useSession();
-    const [[isLoading, session], setSession] = useStorageState("tasks");
+  const { user } = useSession();
+  const [[isLoading, session], setSession] = useStorageState("tasks");
 
-    const userData = user();
-    const [tasks, setTasks] = useState<Task[]>([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+  const userData = user();
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
-        if (session) {
-            setTasks(JSON.parse(session));
-        } else {
-            fetchTasks();
-            setTasks([]);
-        }
-    }, [session]);
+  const fetchedOnce = useRef(false);
 
-    const fetchTasks = useCallback(async () => {
-        if (!userData) return;
+  useEffect(() => {
+    if (session) {
+      setTasks(JSON.parse(session));
+    } else if (!fetchedOnce.current) {
+      fetchedOnce.current = true;
+      fetchTasks();
+      setTasks([]);
+    }
+  }, [session]);
 
-        setLoading(true);
-        setError(null);
+  const fetchTasks = useCallback(async () => {
+    if (!userData) return;
 
-        try {
-            const data = await handleTasks(userData.authorization);
-            setTasks(data);
-            setSession(JSON.stringify(data));
-        } catch (err: any) {
-            setError(err?.message ?? "Erro ao carregar as tarefas.");
-        } finally {
-            setLoading(false);
-        }
-    }, [userData]);
+    setLoading(true);
+    setError(null);
 
-    const clean = useCallback(() => {
-        setSession(null);
-    }, []);
+    try {
+      const data = await handleTasks(userData.authorization);
+      setTasks(data);
+      setSession(JSON.stringify(data));
+    } catch (err: any) {
+      setError(err?.message ?? "Erro ao carregar as tarefas.");
+    } finally {
+      setLoading(false);
+    }
+  }, [userData]);
 
-    const getTasksBy = useCallback(
-        ({
-            include,
-            exclude,
-        }: {
-            include?: StatusTask | StatusTask[];
-            exclude?: StatusTask | StatusTask[];
-        }) => {
-            return tasks.filter((task) => {
-                const included = include
-                    ? (Array.isArray(include) ? include : [include]).includes(task.status)
-                    : true;
+  const clean = useCallback(() => {
+    setSession(null);
+  }, []);
 
-                const excluded = exclude
-                    ? (Array.isArray(exclude) ? exclude : [exclude]).includes(task.status)
-                    : false;
+  const getTasksBy = useCallback(
+    ({
+      include,
+      exclude,
+    }: {
+      include?: StatusTask | StatusTask[];
+      exclude?: StatusTask | StatusTask[];
+    }) => {
+      return tasks.filter((task) => {
+        const included = include
+          ? (Array.isArray(include) ? include : [include]).includes(task.status)
+          : true;
 
-                return included && !excluded;
-            });
-        },
-        [tasks]
-    );
+        const excluded = exclude
+          ? (Array.isArray(exclude) ? exclude : [exclude]).includes(task.status)
+          : false;
 
-    return {
-        tasks,
-        loading,
-        error,
-        fetchTasks,
-        clean,
-        getTasksBy
-    };
+        return included && !excluded;
+      });
+    },
+    [tasks]
+  );
+
+  return {
+    tasks,
+    loading,
+    error,
+    fetchTasks,
+    clean,
+    getTasksBy
+  };
 }
