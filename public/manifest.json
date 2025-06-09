@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "UB Tarefas",
+    "name": "UB Task",
     "version": "4.0",
     "description": "Acesse suas atividades pendentes da Unibalsas de forma rápida e fácil!",
     "action": {
