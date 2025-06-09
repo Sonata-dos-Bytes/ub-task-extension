@@ -14,7 +14,6 @@ const TaskCard = ({ data }: { data: Task }) => {
     <Box
       w="90%"
       minW="353px"
-      minH="160px"
       mx="auto"
       my={6}
       bg="white"
